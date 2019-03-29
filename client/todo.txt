@@ -1,0 +1,8 @@
+Client
+- Multitouch (Mobile)
+
+Bugs
+- Suicid wird als Kill gewertet
+- Waffenspawn auf Kisten verhindern
+- Listener sind an Container gebunden
+- Buttons in mobiler Ansicht lieber rechts

@@ -1,0 +1,488 @@
+@-ms-viewport{
+  width: 100vw ; min-zoom: 100% ; zoom: 100% ;
+  }
+  @viewport{
+    width: 100vw ; min-zoom: 100% zoom: 100% ;
+  }
+@-ms-viewport {
+  user-zoom: fixed ; min-zoom: 100% ;
+  }
+@viewport {
+  user-zoom: fixed ; min-zoom: 100% ;
+  }
+#display{
+  position:absolute;
+  width:1200px;
+  height:675px;
+  top:50%;
+  left:50%;
+  margin-left: -600px;
+  margin-top: -338px;
+  overflow:hidden;
+  background: #db9a4c;
+}
+#leftcontrol{
+  width:200px;
+  height:100%;
+  position:inherit;
+  bottom:40px;
+  left:40px;
+  display:none;
+  touch-action:none;
+}
+#movecontrol{
+  width:200px;
+  height:200px;
+  position:inherit;
+  bottom:200px;
+  left:40px;
+}
+#actioncontrol{
+  width:200px;
+  height:80px;
+  bottom:0px;
+  left:40px;
+  position:inherit;
+}
+
+#movecontrol div, #actioncontrol div{
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+#rightcontrol{
+  width:200px;
+  height:100%;
+  position:inherit;
+  bottom:40px;
+  right:20px;
+  display:none;
+  touch-action:none;
+}
+#shootcontrol{
+  width: 180px;
+  height: 180px;
+  border-radius:50%;
+  background-color:#fff;
+  position:inherit;
+  bottom:250px;
+  opacity: 0.5;
+  box-shadow: inset 0 0 80px #f00;
+}
+#shootbutton{
+
+}
+
+#shootcontrol div{
+  width: 80px;
+  height:80px;
+  margin:50px;
+  border-radius:50%;
+  background-color:#e5e5e5;
+  position:inherit;
+  font-size: 26pt;
+  line-height:80px;
+  text-align:center;
+
+}
+
+
+
+.touchcontrol {
+  z-index: 999;
+}
+
+
+#musiccontrol{
+  position: inherit;
+  bottom: 40px;
+  right: 40px;
+  z-index: 999;
+}
+.latency{
+  position:inherit;
+  right: 100px;
+  width: 40px;
+  height:15px;
+  border-radius:3px;
+  border:1px solid #000;
+  background-color:#fff;
+  font-size:11pt;
+  text-align:center;
+  line-height:15px;
+  opacity:0.5;
+}
+
+#pinglatency{
+  bottom: 75px;
+}
+#serverlatency{
+  bottom: 35px;
+}
+#clientlatency{
+  bottom: 55px;
+}
+
+#spectatorinterface{
+  position:absolute;
+  top:0;
+  left:50%;
+  width:300px;
+  height:80px;
+  margin-left: -150px;
+  text-align:center;
+  display:none;
+  z-index:20;
+}
+body{
+  background: #d19043;
+  margin:0;
+  padding:0;
+}
+#loginscreen{
+  position:inherit;
+  width: 100%;
+  height: 100%;
+  background: url(images/logo.jpg);
+}
+#lobbyrooms,#roomplayer{
+
+}
+#roomplayer div:first-of-type{
+  height:300px;
+  overflow-y:auto;
+}
+
+.displayMsg{
+  font-size: 14pt;
+  text-shadow: 1px 1px 2px #000;
+}
+.displayMsg .playername{
+  font-weight: bold;
+}
+#creationForm .configBot{
+  width:100%;
+}
+
+#creationForm .configTop td{
+  padding: 4px;
+}
+#creationForm .configBot td{
+  padding:0;
+  padding-right: 40px;
+}
+
+#map{
+  background:url(images/field.gif);
+  display: none;
+  width:100%;
+  height:100%;
+  position:inherit;
+  z-index:5;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -webkit-backface-visibility:hidden;
+  -webkit-perspective: 1000;
+
+}
+#player,#projectiles,#gameobjectsGround,#gameobjectsOver{
+  width:100%;
+  height:100%;
+  position:inherit;
+}
+#gameobjectsGround .weapon, #gameobjectsGround .gameobject, #gameobjectsGround .powerup{
+position:inherit;
+}
+
+#lobby, #room{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  display:none;
+}
+.lobbycontent{
+  overflow: auto;
+}
+#lobbytable{
+    width: 100%;
+    border:1px solid;
+    padding:0;
+    border-spacing:0;
+}
+#lobbytable td{
+  padding:5px;
+}
+
+#lobbytable th{
+    background-color:#d08f41;
+}
+#lobbytable tr:nth-child(odd){
+    background-color: #feca8c;
+}
+#lobbytable tr:nth-child(even){
+    background-color: #dfb17a;
+}
+
+.statistic{
+    width:100%;
+    color:#fff;
+    text-shadow: 1px 1px 2px #000;
+    font-size: 16pt;
+}
+
+#display .gamechat{
+  z-index:50;
+  position:inherit;
+  width:80%;
+  left:10%;
+  background:#000;
+  bottom:10%;
+  display: none;
+
+}
+.player .playername{
+  position: inherit;
+  background:#000;
+  color:#fff;
+  font-size:10pt;
+  top:-15px;
+  padding-left: 3px;
+  padding-right: 3px;
+  text-align: center;
+  white-space:nowrap;
+  font-weight:normal;
+  border-radius:2px;
+  opacity: 0.8;
+  text-shadow: 1px 1px 2px #000;
+}
+.player .hand{
+  position:inherit;
+  width: 50px;
+  height: 50px;
+  top:30px;
+}
+.player .fist{
+  top:20px;
+  display:none;
+  background-image:url(images/fist.png);
+}
+.player .weapon, .player .weaponshot{
+background-position: -150px 0px;
+}
+.player .weaponshot{
+display:none;
+}
+
+.player .weaponshot .fire{
+  position:inherit;
+  width: 50px;
+  height: 50px;
+}
+.player .death{
+  position:inherit;
+  width: 100px;
+  height: 100px;
+  left: -25px;
+  top:-25px;
+  background-image: url(images/charset/death.png);
+}
+
+.player_texttriangle{
+  position:inherit;
+  width:0;
+  height:0;
+  bottom:-10px;
+  left:50%;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid #2651A0;
+  transform: rotate(180deg);
+}
+
+.player_text{
+  display:none;
+  position: inherit;
+  background:#fff;
+  color:#000;
+  font-size:10pt;
+  line-height: 12px;
+  padding: 5px;
+  border: 4px solid #2651A0;
+  margin:0 auto;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  opacity : 0.85;
+  word-wrap:break-word;
+}
+
+.player, .player .model{
+  width: 50px;
+  height:50px;
+  position:inherit;
+}
+.player{
+margin-top:-10px;
+}
+
+.checkicon
+{
+    background-image: url('images/checkicon.png');
+    background-position: -30px 0;
+    width:30px;
+    height:30px;
+    float:right;
+}
+#connectionDialog{
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.selectslider{
+  width:200px;
+  margin-left:20px;
+  margin-right:20px;
+}
+#create{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hud{
+  display:none;
+  width:100%;
+  height:150px;
+  position:absolute;
+  z-index: 20;
+  top:0;
+}
+#overlayMid{
+  display:none;
+  width:100%;
+  height:150px;
+  position:absolute;
+  z-index: 19;
+  top:30%;
+  text-align: center;
+}
+#overlayComplete{
+  display:none;
+  width:100%;
+  height:100%;
+  overflow-y:auto;
+  position:absolute;
+  z-index: 21;
+  text-align: center;
+  background: #000;
+  opacity: 0.8;
+}
+
+
+#hud .weapon {
+  position:absolute;
+  left:0;
+  height:150px;
+  width:200px;
+  opacity:0.8;
+  font-size:20pt;
+  text-shadow: 2px 2px 4px #000;
+  color:#fff;
+}
+#hud .lifehud{
+  position:absolute;
+  overflow:hidden;
+  right:0;
+  height:150px;
+  width:200px;
+  opacity:1;
+  text-align:right;
+  top:10px;
+}
+#hud .lifehud .lifebarContainer .lifevalue{
+  position:inherit;
+  font-size:20pt;
+  text-shadow: 1px 1px 2px #000;
+  color:#fff;
+  left:30%;
+}
+
+#hud .lifehud .lifebarContainer{
+  width: 180px;
+  height: 30px;
+  overflow: hidden;
+  border: 2px solid #000;
+  position:inherit;
+  text-align:center;
+}
+#hud .lifehud .lifebarContainer .lifebar{
+  width: 180px;
+  height: 30px;
+  background-color:#c00;
+  opacity:0.5;
+  right:0;
+  position:absolute;
+}
+
+#creationForm input[type="text"]{
+  width:100%;
+}
+#creationForm td.chbox{
+  width:1px;
+}
+#lobbytable td{
+  text-align:center;
+}
+#roomchat{
+  bottom:0;
+  z-index:15;
+  position:absolute;
+  width:100%;
+  height:200px;
+  background: #000;
+  display: none;
+}
+#roomchat .chatContent{
+  height: 170px;
+  color:#fff;
+  width:100%;
+  overflow:auto;
+  word-wrap:break-word;
+}
+#roomchat .chatField{
+  height: 30px;
+  width:100%;
+  white-space: nowrap;
+}
+
+#roomplayer table{
+  width:100%;
+}
+#roomplayer table tbody td{
+  width:50%;
+  height:50px;
+  text-align:center;
+  color:#fff;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000;
+}
+.player .blood{
+  background-image: url('images/blood.png');
+  width:50px;
+  height:50px;
+  position:inherit;
+}
+.bullet{
+  width:20px;
+  height:20px;
+  position:absolute;
+  margin-left:-10px;
+  margin-top:-10px;
+}
+#all,#handlerAll{
+  width:100%;
+  height:100%;
+  position:absolute;
+}
+#handlerAll{
+  position:inherit;
+  z-index:500;
+  touch-action:none;
+}

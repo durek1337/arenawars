@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^(www\.)?arenawars\.eu [NC]
+RewriteCond %{REQUEST_URI} !^/aw/.*$
+RewriteRule ^(.*)$ /aw/$1

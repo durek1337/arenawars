@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+<title>ArenaWars - v1.04</title>
+<script type="text/javascript" src="scripts/storage.js"></script>
+<script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="scripts/jquery-json.js"></script>
+<script type="text/javascript" src="scripts/jquery-rotate.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui.js"></script>
+<script type="text/javascript" src="scripts/jquery-selectslider.js"></script>
+<script type="text/javascript" src="scripts/jquery.onoff.js"></script>
+<script type="text/javascript" src="scripts/jquery.ui.chatbox.js"></script>
+<script type="text/javascript" src="scripts/jquery.backgroundposition.js"></script>
+<script type="text/javascript" src="scripts/jquery.noselect.js"></script>
+<script type="text/javascript" src="scripts/jquery.playSound.js"></script>
+<script type="text/javascript" src="scripts/jquery.preloader.js"></script>
+
+<script type="text/javascript" src="scripts/global.js"></script>
+
+<script type="text/javascript" src="scripts/timer.js"></script>
+<script type="text/javascript" src="scripts/game_player.js"></script>
+<script type="text/javascript" src="scripts/game_map.js"></script>
+<script type="text/javascript" src="scripts/game_user.js"></script>
+<script type="text/javascript" src="scripts/game_room.js"></script>
+<script type="text/javascript" src="scripts/game_keyboard.js"></script>
+<script type="text/javascript" src="scripts/game_mouse.js"></script>
+<script type="text/javascript" src="scripts/game_server.js"></script>
+<script type="text/javascript" src="scripts/game_chat.js"></script>
+<script type="text/javascript" src="scripts/game_auth.js"></script>
+<script type="text/javascript" src="scripts/game_menu.js"></script>
+<script type="text/javascript" src="scripts/game_weapon.js"></script>
+<script type="text/javascript" src="scripts/game_go.js"></script>
+<script type="text/javascript" src="scripts/game_powerup.js"></script>
+<script type="text/javascript" src="scripts/game_init.js"></script>
+
+
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" type="text/css" href="gamestyle.css">
+<link rel="stylesheet" href="style/jquery-ui.css" type="text/css">
+<link rel="stylesheet" href="style/jquery.ui.chatbox.css" type="text/css">
+<link rel="stylesheet" href="style/jquery.onoff.css" type="text/css">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+<!--
+<link rel="stylesheet" href="style/jquery-ui.structure.css" type="text/css" />
+<link rel="stylesheet" href="style/jquery-ui.theme.css" type="text/css" />
+-->
+</head>
+<body>
+<div id="all">
+<div id="display">
+
+      <div id="loginscreen"></div>
+      <div id="map">
+          <div id="gameobjectsGround"></div>
+          <div id="player"></div>
+          <div id="projectiles"></div>
+          <div id="gameobjectsOver"></div>
+      </div>
+      <div id="hud">
+          <div class="weapon"></div>
+          <div class="lifehud">
+              <div class="lifebarContainer"><div class="lifebar"></div><div class="lifevalue"></div></div>
+          </div>
+      </div>
+      <div id="spectatorinterface">
+          <b>Zuschauermodus</b><br>
+          Folge <select></select><br>
+      </div>
+      <div id="overlayMid"></div>
+      <div id="overlayComplete"></div>
+
+
+      <div class="gamechat">
+          <form>
+            <input style="width:100%;" type="text" name="msg">
+          </form>
+      </div>
+
+      <div id="room">
+         <ul>
+              <li><a href="#roomplayer">Spieler&uuml;bersicht</a></li>
+              <li><a href="#roominformation">Spielinformationen</a></li>
+              <li><a onclick="user.leaveRoom();" href="#roomleave">Spiel verlassen</a></li>
+          </ul>
+          <div id="roomplayer">
+          <div>
+              <table>
+                  <tbody>
+                  </tbody>
+              </table>
+          </div>
+              <button id="startgame" onclick="user.getRoom().startgame()">Starten!</button>
+          </div>
+          <div id="roominformation">
+
+          </div>
+          <div id="roomleave">Verlasse Raum...</div>
+
+      </div>
+      <div id="roomchat" class="publicchat">
+            <div class="chatContent"></div>
+            <div class="chatField"><form action="#" onsubmit="user.sendChatMessage(this.msg.value); this.msg.value=''; return false;"><input style="width:90%;" type="text" value="" name="msg" ><input style="width:10%;" type="submit" value="senden" ></form></div>
+      </div>
+
+      <div id="menu" title="Spielmen&uuml;">Wenn Du das Spiel verl&auml;sst, wird dein Charakter noch immer im Spiel bleiben und kann get&ouml;tet werden. Dies kann sich dann negativ auf deine Statistik auswirken.</div>
+
+      <div id="lobby">
+          <ul>
+              <li><a href="#lobbyrooms">Lobby - Spiel beitreten</a></li>
+              <li><a href="#lobbycreate">Spiel erstellen</a></li>
+              <li><a href="#lobbystatistics" class="ttip" title="Zur Zeit werden noch keine Statistiken gespeichert">Statistiken</a></li>
+              <li><a href="#lobbyinstruction">Anleitung</a></li>
+              <li><a href="#lobbylogout" onclick="user.logout()">Accountlogout</a></li>
+          </ul>
+          <div id="lobbyrooms" class="lobbycontent">
+          Zur Zeit befinden sich <span id="lobbyplayer">0</span> Spieler in der Lobby
+          <table id="lobbytable">
+              <thead>
+                <tr>
+                    <th style="width:1px;">ID</th><th>Spieler</th><th>Raumtitel</th><th>Runden (HP)</th><th></th>
+                </tr>
+              </thead>
+             <tbody>
+
+             </tbody>
+          </table>
+
+          </div>
+
+          <div id="lobbycreate" class="lobbycontent">
+          <form action="#" onsubmit="return user.createRoom(this)" id="creationForm" autocomplete="off">
+              <table class="configTop">
+                  <tr class="ttip" title="Der Titel wird in der Lobby angezeigt. Er sollte am besten Aufschluss &uuml;ber die Spieleinstellungen geben.">
+                      <td>Titel:</td><td colspan=2><input type="text" name="title"></td>
+                  </tr>
+                   <tr class="ttip" title="W&auml;hle einen Schauplatz aus.">
+                      <td>Map:</td>
+                      <td colspan="2"><select name="mapid">
+                          <option value=1>Mikrig (300x200)</option>
+                          <option value=2>Winzig (400x300)</option>
+                          <option value=3>Klein (600x400)</option>
+                          <option value=4 selected>Mittel (800x600)</option>
+                          <option value=5>Gro&szlig; (1200x800)</option>
+                          <option value=6>Riesig (2000x1500)</option>
+                      </select></td>
+                   </tr>
+                  <tr class="ttip" title="Die maximale Spieleranzahl.">
+                      <td>Spieler:</td><td><select name="limit"></select></td><td><div class="selectslider" id="limitSlider"></div></td>
+                  </tr>
+                  <tr class="ttip" title="Die Anzahl der Tode die man erleiden darf. Ist die Option &quot;Respawn&quot; aktiv, entspricht dieser Wert den Einstiegen.">
+                      <td>Runden:</td><td><select name="rounds"></select></td><td><div class="selectslider" id="roundsSlider"></div></td>
+                  </tr>
+                  <tr class="ttip" title="Der Basis-Lebenspunktewert mit dem jeder Spieler eine neue Runde beginnt.">
+                      <td>Lebenspunkte:</td><td><select name="health"></select></td><td><div class="selectslider" id="healthSlider"></div></td>
+                  </tr>
+                  <tr>
+                      <td colspan=3>
+                          <table class="configBot">
+                              <tr>
+                                  <td class="ttip" title="Ist Respawn aktiviert, muss man nicht warten bis alle anderen Spieler tot sind und kann seine verf&uuml;gbare Rundenanzahl bereits fr&uuml;her belasten.">Respawn: </td>
+                                  <td class="ttip"><input type="checkbox" name="respawn" ></td>
+                                  <td class="ttip" title="Ist Weapondrop aktiviert, lassen Spieler ihre Waffen mit restlicher Munition an Ort des Todes fallen.">Weapondrop: </td>
+                                  <td class="ttip"><input type="checkbox" name="weapondrop" ></td>
+                              </tr>
+                              <tr>
+                                  <td class="ttip" title="Sind Powerups aktiviert, spawnen regelm&auml;&szlig;ig sammelbare zeitlich begrenzte Ver&auml;nderungen der Eigenschaften.">Powerups: </td>
+                                  <td class="chbox"><input type="checkbox" name="powerups" ></td>
+                                  <td class="ttip" title="[Noch nicht verf&uuml;gbar] Ist Revenge aktiviert explodiert kurz nach dem Tod der Leichnam und verursacht Fl&auml;chenschaden um ihn herum.">Revenge: </td>
+                                  <td class="chbox"><input type="checkbox" name="revenge" ></td>
+
+                              </tr>
+                              <tr>
+                                  <td class="ttip" title="[Noch nicht verf&uuml;gbar] Sind Teams aktiviert, hat man die M&ouml;glichkeit sich zu verb&uuml;nden.">Teams: </td>
+                                  <td class="chbox"><input type="checkbox" name="teams" ></td>
+                                  <td class="ttip" title="[Noch nicht verf&uuml;gbar] Ist Friendly-Fire aktiviert, verletzt man ebenfalls die Teammitglieder. Ist die Option &quot;Teams&quot; deaktiviert, ist diese Option wirkungslos.">&nbsp;Friendly-Fire: </td>
+                                  <td class="chbox"><input type="checkbox" name="friendlyfire" ></td>
+                              </tr>
+                              <tr>
+                                  <td colspan=4>
+                                       <div id="weaponCarousel">
+
+                                       </div>
+                                  </td>
+                              </tr>
+                          </table>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td colspan=3><input type="submit" value="Spiel erstellen" ></td>
+                  </tr>
+
+              </table>
+              </form>
+
+          </div>
+          <div id="lobbystatistics" class="lobbycontent">
+          Statistik
+          </div>
+          <div id="lobbyinstruction" class="lobbycontent" style="text-align:center">Anleitung</div>
+          <div id="lobbylogout">Accountlogout angefragt...</div>
+      </div>
+
+      <div id="handlerAll"></div>
+      <div id="leftcontrol" class="touchcontrol">
+        <div id="movecontrol">
+            <div style="position:inherit;top:0;left:70px;width:60px;height:70px;background-image:url('images/cross/up.png');" data-subject="y-1"></div>
+            <div style="position:inherit;left:0;top:70px;width:70px;height:60px;background-image:url('images/cross/left.png');" data-subject="x-1"></div>
+            <div style="position:inherit;top:70px;left:70px;width:60px;height:60px;background-image:url('images/cross/mid.png');" data-subject="mid"></div>
+            <div style="position:inherit;top:70px;left:130px;width:70px;height:60px;background-image:url('images/cross/right.png');" data-subject="x1"></div>
+            <div style="position:inherit;top:130px;left:70px;width:60px;height:70px;background-image:url('images/cross/down.png');" data-subject="y1"></div>
+        </div>
+        <div id="actioncontrol">
+          <div style="position:inherit;background-image:url('images/key_use.png');width:80px;height:80px;" data-subject="use"></div>
+          <div style="position:inherit;left:120px;background-image:url('images/key_reload.png');width:80px;height:80px;" data-subject="reload"></div>
+        </div>
+      </div>
+      <div id="rightcontrol" class="touchcontrol">
+          <div id="shootbutton"></div>
+          <div id="shootcontrol"><div data-subject="stick"></div></div>
+      </div>
+
+      </div>
+      <div id="pinglatency" class="ttip latency" title="Keine Verbindung"></div>
+      <div id="serverlatency" class="ttip latency" title="Kein aktives Spiel"></div>
+      <div id="clientlatency" class="ttip latency" title=""></div>
+
+      <img id="musiccontrol" class="ttip" title="Musik + Sounds ein/aus" alt="Sound" src="images/sound.png" onclick="user.setConfig('sounds',!user.getConfig('music'));user.setConfig('music',!user.getConfig('music'));">
+</div>
+
+
+<div id="errorDialog" title="Fehler"></div>
+        <div id="messageDialog" title="Meldung"></div>
+
+        <div id="connectionDialog" title="Serverstatus"></div>
+
+        <div id="loginDialog" title="Accountlogin">
+          <div id="loginstatus"></div>
+            <form id="loginForm" action="#" onsubmit="return false;">
+              Account-Name:<br><input id="name" type="text" style="width:90%;" ><br>
+              Passwort:<br><input id="pw" type="password" style="width:90%;" ><br>
+              <input type="submit" value="Einloggen" ><br>
+              Noch keinen Account?<br><a href="#">Account erstellen!</a>
+            </form>
+            <footer style="font-size:10pt;">ArenaWars v 1.04 &laquo; 14.04.2016 &raquo;</footer>
+        </div>
+
+        <div id="registrationDialog" title="Registrieren">
+          <form onsubmit="return false;">
+            <b>Account-Name</b><br>
+            <input type="text" name="name" maxlength=16><div class="checkicon" data-subject="name"></div><br >
+            <b>Passwort</b><br >
+            <input type="password" name="pw" ><div class="checkicon" data-subject="pw"></div><br >
+            <b>Passwort (Wdh.)</b><br >
+            <input type="password" name="pw2" ><div class="checkicon" data-subject="pw2"></div><br >
+            <b>E-Mail</b><br >
+            <input type="text" name="email" ><div class="checkicon" data-subject="email"></div><br >
+            <hr>Mit dem Klick auf die Schaltfl&auml;che &quot;Registrieren&quot; akzeptierst du automatisch unsere Nutzungsbedingungen<hr>
+            <input type="submit" value="Registrieren">
+          </form>
+          <div data-subject="succeed"><span style="font-weight:bold;color:#0c0;">Der Account wurde erfolgreich erstellt.</span><br><br>Du kannst diese Meldung nun oben Rechts auf dem &quot;X&quot; wegklicken und dich einloggen.</div>
+          <div data-subject="nosucceed"><span style="font-weight:bold;color:#c00;">Der Account konnte nicht erstellt werden.</span><br><br>Entweder die Clientseitigen &Uuml;berpr&uuml;fungen wurden umgangen, wodurch das Formular f&auml;lschlicherweise abgeschickt werden konnte oder jemand kam bei der Erstellung des Accountnamens zuvor.</div>
+        </div>
+
+</body>
+
+
+</html>
