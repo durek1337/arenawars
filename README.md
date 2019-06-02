@@ -13,7 +13,7 @@ Mittlerweile würde ich das in NodeJS schreiben. Das Passwort-Hashing geht auch 
 
 * WebApp mit JQuery und JQueryUI
 
-Mittlerweile würde ich das mit ReactJS umsetzen. Die Grafiken sind im Rasterformat, diese wären im Vektorformat zeitloser.
+Mittlerweile würde ich webpack nutzen
 
 
 
