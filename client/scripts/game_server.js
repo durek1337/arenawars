@@ -390,13 +390,14 @@
                          $("#connectionDialog").dialog("close");
                          $("#loginDialog").dialog("open");
                          console.log("Verbunden mit Server");
+/*
                          server.ping();
                          server.pingtimer = setInterval(server.ping,server.pinginterval);
                             var usr = db.getItem("usrname");
                             var pw = db.getItem("usrpw");
                          if(usr != null && pw != null) user.login(usr,pw);
                        };
-
+*/
                 this.socket.onmessage = function(event){
                   console.log("Nachricht empfangen: "+event.data);
                                 server.receive(event.data);
