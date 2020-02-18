@@ -64,7 +64,7 @@ this.spectator = s;
 
 
 void send(JsonObject obj) throws Exception{
-	System.out.println(this.getID()+": "+obj.toString());
+//	System.out.println(this.getID()+": "+obj.toString());
 if(this.session != null){
 		if(this.session.isOpen())
 		this.session.getBasicRemote().sendText(obj.toString());
