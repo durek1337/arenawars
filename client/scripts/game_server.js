@@ -396,8 +396,8 @@
                             var usr = db.getItem("usrname");
                             var pw = db.getItem("usrpw");
                          if(usr != null && pw != null) user.login(usr,pw);
+                         */
                        };
-*/
                 this.socket.onmessage = function(event){
                   console.log("Nachricht empfangen: "+event.data);
                                 server.receive(event.data);
