@@ -155,14 +155,16 @@ changeDirection(this.dirX,this.dirY);
 }
 public void changeDirection(int x, int y){
 synchronized(this){
-	System.out.println(this.getID()+" directed to ("+x+"|"+y+")");
+//	System.out.println(this.getID()+" directed to ("+x+"|"+y+")");
 	this.dirX = x;
 	this.dirY = y;
 	this.room.sendToAll(Json.createObjectBuilder().add("type",6).add("stype",2).add("pos",this.controller.pos).add("dir",Json.createObjectBuilder().add("x",this.dirX).add("y",this.dirY).build()).add("x", this.rec.x).add("y", this.rec.y).build()); // Bewege in Richtungsvektor x,y
-	
+
+	/*
 	if(x == 0 && y == 0){
 		System.out.println(this.getID()+" ended Moving");
 	}
+	*/
 	//if(!this.isAlive()) this.start();
 }
 }
