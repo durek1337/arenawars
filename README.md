@@ -9,6 +9,16 @@ Aktuelle Version: 1.04
 
 Mittlerweile würde ich das in NodeJS schreiben. Das Passwort-Hashing geht auch besser.
 
+## Docker-Setup
+
+Um Server und Datenbank schnell zu starten, werden Docker und Docker Compose benötigt. Nach der Installation können beide Dienste mit
+
+```
+docker-compose up
+```
+
+gestartet werden. Die MySQL-Datenbank wird dabei automatisch mit `arenawars.sql` initialisiert und der Spielserver läuft anschließend unter Port 8081.
+
 ## Client
 
 * WebApp mit JQuery und JQueryUI

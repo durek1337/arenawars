@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=arenawars
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - ./arenawars.sql:/docker-entrypoint-initdb.d/arenawars.sql
+  server:
+    build: ./server
+    depends_on:
+      - db
+    ports:
+      - "8081:8081"
