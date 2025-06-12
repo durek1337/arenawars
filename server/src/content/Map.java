@@ -13,7 +13,7 @@ String title,layer;
 JsonArray overlayer,groundlayer;
 
 public HashMap<Rectangle, Gameobject> gameobjects = new HashMap<>();
-public HashMap<Rectangle, Weapon> weaopons = new HashMap<>();
+public HashMap<Rectangle, Weapon> weapons = new HashMap<>();
 public HashMap<Rectangle, PowerUp> powerups = new HashMap<>();
 Rectangle rec;
 

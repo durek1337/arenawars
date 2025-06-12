@@ -50,8 +50,8 @@ JPanel p;
 						}
 					}
 					}
-					synchronized(r.map.weaopons){
-						for(Rectangle rec : r.map.weaopons.keySet()){
+					synchronized(r.map.weapons){
+						for(Rectangle rec : r.map.weapons.keySet()){
 							g.fillPolygon(rec.pol);
 						}
 					}
@@ -99,7 +99,7 @@ JPanel p;
 					basicMenuSpeed.add(basicMenuSpeedChar);
 					
 					basicMenu.add(basicMenuSpeed);
-					JMenu addMenu = new JMenu("Hinzufügen");
+					JMenu addMenu = new JMenu("HinzufÃ¼gen");
 						JMenuItem addMenuPowerup = new JMenuItem("PowerUp");
 						addMenuPowerup.addActionListener((event) -> {
 							this.r.addRandomPowerup();

@@ -209,8 +209,8 @@ public void addShot(){
 
 public void use(){
 	Rectangle wrec = null;
-synchronized(this.room.map.weaopons){
-	for(Rectangle r : this.room.map.weaopons.keySet()){
+synchronized(this.room.map.weapons){
+	for(Rectangle r : this.room.map.weapons.keySet()){
 		if(this.rec.isColliding(r)){
 			wrec = r;
 			break;
@@ -218,10 +218,10 @@ synchronized(this.room.map.weaopons){
 	}
 	
 	if(wrec != null){
-		Weapon w = this.room.map.weaopons.get(wrec);
+		Weapon w = this.room.map.weapons.get(wrec);
 		
 		if(this.weapon == null || this.weapon.id != w.id){	
-			if(this.weapon == null) this.room.currentWeapons++; // Die Waffe bleibt im Spiel, nachher wird dieser Wert wieder gesenkt daher hier erhöhen
+			if(this.weapon == null) this.room.currentWeapons++; // Die Waffe bleibt im Spiel, nachher wird dieser Wert wieder gesenkt daher hier erhÃ¶hen
 			this.weapon = w;
 		} else if(this.weapon.id == w.id) this.weapon.stack += w.ammo+w.stack;
 		
