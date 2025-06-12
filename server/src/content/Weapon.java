@@ -6,14 +6,14 @@ import javax.json.JsonObject;
 /**
  * @author Dominik
  * Waffen
- * Es gibt vier Waffen: Fäuste, Pistole, Shotgun und Sturmgewehr.
- * Waffen werden verwendet um gegnerischen Charakteren Schaden zuzufügen.
- * Das Kampfsystem beinhaltet mehrere Fern- und Nahkampfwaffen, mit denen der Spieler in der Lage ist seinem Gegner Schaden zu zufügen, indem er durch erfolgreiche Treffer ihren Lebensvorrat reduziert.
+ * Das Kampfsystem beinhaltet mehrere Fern- und Nahkampfwaffen, mit denen der Spieler in der Lage ist seinem Gegner Schaden zuzufgen, indem er durch erfolgreiche Treffer ihren Lebensvorrat reduziert.
+ * Waffen werden verwendet um gegnerischen Charakteren Schaden zuzufÃ¼gen.
+ * Das Kampfsystem beinhaltet mehrere Fern- und Nahkampfwaffen, mit denen der Spieler in der Lage ist seinem Gegner Schaden zu zufÃ¼gen, indem er durch erfolgreiche Treffer ihren Lebensvorrat reduziert.
  * Die einzelnen Waffen besitzen verschiedene Eigenschaften, wie zB.:
  *	Schaden pro Treffer
  *	Feuerrate
  *	(optional) Genauigkeit
- * Genauere Informationen können dem Benutzerhandbuch bzw. den Spielregeln entnommen werden.
+ * Genauere Informationen kÃ¶nnen dem Benutzerhandbuch bzw. den Spielregeln entnommen werden.
  */
 
 
