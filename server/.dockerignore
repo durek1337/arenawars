@@ -1,0 +1,5 @@
+# Exclude development artifacts from Docker build context
+src/
+build/
+test/
+start.bat

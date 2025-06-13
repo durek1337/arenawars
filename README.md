@@ -6,6 +6,7 @@ Aktuelle Version: 1.04
 ## Server
 * Java EE - Serversoftware (Benötigt einen Application-Server wie bspw. glassfish)
 * MySQL-Datenbank
+* Docker-Image basiert nun auf OpenJDK&nbsp;17
 
 Mittlerweile würde ich das in NodeJS schreiben. Das Passwort-Hashing geht auch besser.
 
