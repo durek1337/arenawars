@@ -66,8 +66,30 @@ public class Init { // Initialisierungsklasse
 		}
 		br.close();
 		
-		System.out.println("* Konfigurationsdatei eingelesen");
-		MySQL.setConfig(config.get("mysql_host"), config.get("mysql_user"), config.get("mysql_password"), config.get("mysql_name"), new Integer(config.get("mysql_port")));
+                System.out.println("* Konfigurationsdatei eingelesen");
+
+                // Allow overriding database settings via environment variables
+                String env;
+                env = System.getenv("MYSQL_HOST");
+                if(env != null) config.put("mysql_host", env);
+                env = System.getenv("MYSQL_USER");
+                if(env != null) config.put("mysql_user", env);
+                env = System.getenv("MYSQL_PASSWORD");
+                if(env != null) config.put("mysql_password", env);
+                env = System.getenv("MYSQL_NAME");
+                if(env != null) config.put("mysql_name", env);
+                env = System.getenv("MYSQL_PORT");
+                if(env != null) config.put("mysql_port", env);
+                env = System.getenv("WS_PORT");
+                if(env != null) config.put("ws_port", env);
+
+                MySQL.setConfig(
+                        config.get("mysql_host"),
+                        config.get("mysql_user"),
+                        config.get("mysql_password"),
+                        config.get("mysql_name"),
+                        new Integer(config.get("mysql_port"))
+                );
 		db = new MySQL();
 		
 		System.out.println("* MySQL-Verbindung hergestellt");

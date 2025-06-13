@@ -20,6 +20,8 @@ docker-compose up
 
 gestartet werden. Die MySQL-Datenbank wird dabei automatisch mit `arenawars.sql` initialisiert und der Spielserver läuft anschließend unter Port 8081.
 
+Die Zugangsdaten zur Datenbank können über Umgebungsvariablen angepasst werden. `docker-compose.yml` definiert dazu `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD` und `MYSQL_NAME`. Diese Werte werden vom Server beim Start eingelesen und überschreiben die Angaben aus `server/config.ini`.
+
 ## Client
 
 * WebApp mit JQuery und JQueryUI
