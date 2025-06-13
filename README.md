@@ -22,6 +22,8 @@ gestartet werden. Die MySQL-Datenbank wird dabei automatisch mit `arenawars.sql`
 
 Die Zugangsdaten zur Datenbank können über Umgebungsvariablen angepasst werden. `docker-compose.yml` definiert dazu `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD` und `MYSQL_NAME`. Diese Werte werden vom Server beim Start eingelesen und überschreiben die Angaben aus `server/config.ini`.
 
+Seit Version 8 wird der offizielle *MySQL Connector/J* verwendet. Der Docker-Container startet den Server deshalb mit dem Treiber `mysql-connector-j-8.3.0.jar`.
+
 ## Client
 
 * WebApp mit JQuery und JQueryUI

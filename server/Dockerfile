@@ -8,4 +8,4 @@ ENV MYSQL_HOST=db \
     MYSQL_PASSWORD=secret \
     MYSQL_NAME=arenawars
 EXPOSE 8081
-ENTRYPOINT ["java","-jar","/app/awserver.jar"]
+ENTRYPOINT ["java","-cp","/app/awserver.jar:/app/dependencies/mysql-connector-j-8.3.0.jar","content.Init"]

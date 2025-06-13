@@ -50,8 +50,7 @@ db_port = port;
 public void connect() throws SQLException{
 	System.out.println("Stelle Verbindung zur Datenbank her: "+db_host);
 	try{
-		this.conn = DriverManager.getConnection("jdbc:mysql://"+db_host+":"+db_port+"/"+db_name+"?" +
-	            "user="+db_user+"&password="+db_pw);
+                this.conn = DriverManager.getConnection("jdbc:mysql://"+db_host+":"+db_port+"/"+db_name+"?user="+db_user+"&password="+db_pw+"&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC");
 		conn.setAutoCommit(true);
 		
 	} catch (SQLException ex) {
@@ -64,8 +63,7 @@ public void LoadDriver() throws Exception {
 
 
         // Der Aufruf von newInstance() ist ein Workaround
-        // für einige misslungene Java-Implementierungen
-        Class.forName("com.mysql.jdbc.Driver").newInstance(); // com.mysql.jdbc.Driver
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         
 
 }
