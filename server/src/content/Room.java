@@ -181,8 +181,8 @@ try{
 	
 	if(this.started){
 		int pos = 0;
-		// Wenn das Spiel bereits l‰uft
-			if(this.accounts.containsKey(a.id)){ // Wenn der Account zum Spiel gehˆrt
+		// Wenn das Spiel bereits l√§uft
+			if(this.accounts.containsKey(a.id)){ // Wenn der Account zum Spiel geh√∂rt
 				a.sendMessage("Die Verbindung zum Spiel wurde wiederhergestellt!");
 				
 				a.spectator = this.spectator.get(this.accounts.get(a.id));
@@ -242,8 +242,8 @@ public void respawn(){
 		this.currentPowerupId = 0;
 		this.map.powerups.clear();
 	}
-	synchronized(this.map.weaopons){
-		this.map.weaopons.clear();
+	synchronized(this.map.weapons){
+		this.map.weapons.clear();
 		this.currentWeapons = 0;
 		this.currentWeaponId = 0;
 	}
@@ -253,7 +253,7 @@ public void respawn(){
 	}
 	synchronized(this.spectator){
 		for(Spectator s : this.spectator.values()){
-		if(s.pos > 0) this.accounts.put(s.acc.id, s.pos); // Spieler fest mit Account verkn¸pfen
+		if(s.pos > 0) this.accounts.put(s.acc.id, s.pos); // Spieler fest mit Account verkn√ºpfen
 			s.send(getPosJSON(s.pos));
 	}
 
@@ -325,7 +325,7 @@ public void enterChars(){ // Lasse alle Charaktere die Map betreten
 	this.players++;
 	}
 	}
-	// F¸ge Waffen hinzu
+	synchronized(this.map.weapons){
 	synchronized(this.map.weaopons){
 		while(this.currentWeapons < this.players*2)
 			addRandomWeapon();
@@ -403,7 +403,7 @@ public void roundStart(){
 
 
 public void gameFinished(){
-		this.gamechannel.iterateAll((Account a)->{ // Schmeiﬂe alle Clients raus -> Spiel schlieﬂt automatisch
+		this.gamechannel.iterateAll((Account a)->{ // Schmei√üe alle Clients raus -> Spiel schlie√üt automatisch
 			leave(a);
 			a.enterChannel(Init.lobby);
 			});
@@ -414,7 +414,7 @@ public void startgame() {
 	System.out.println(this.getID()+" is going to start!");
 	try{
 // Spiel- und Mapdaten sammeln
-if(this.started) throw new GameException("Das Spiel l‰uft bereits");
+if(this.started) throw new GameException("Das Spiel l√§uft bereits");
 if(this.spectator.size() < 2) throw new GameException("Ein Spiel erfordert mindestens 2 Spieler");
 
 this.running = true;
@@ -448,7 +448,7 @@ Character createChar(Spectator s){
 	synchronized(this.chars){
 	this.chars.add(c);
 	}
-	// Hier m¸sste der Spawnpunkt am besten definiert werden
+	// Hier m√ºsste der Spawnpunkt am besten definiert werden
 	s.controlChar(c);
 	
 	return c;	
@@ -505,7 +505,7 @@ JsonObject getLightJSON(){ // Get JSON Roominformation for listing
 
 	ob
 	.add("id",this.id)
-	.add("extended",0) // Wenige Rauminformationen f¸r die Lobbyliste
+	.add("extended",0) // Wenige Rauminformationen f√ºr die Lobbyliste
 	.add("title",this.title)
 	.add("hp",this.hp)
 	.add("rounds", this.rounds)
@@ -524,9 +524,9 @@ JsonObject getJSON(){ // Get JSON Roominformation
 
 	ob
 			.add("id",this.id)
-			.add("extended",1) // Viele Rauminformationen f¸r den Spielbeitritt
-			.add("title",this.title)
-			.add("hp",this.hp)
+	synchronized(this.map.weapons){
+	for(Rectangle r : this.map.weapons.keySet())
+		warr.add(Json.createObjectBuilder().add("id", r.id).add("x",r.x).add("y",r.y).add("wid", this.map.weapons.get(r).id));
 			.add("rounds", this.rounds)
 			.add("limit", this.limit)
 			.add("movementspeed",this.movementspeed)
@@ -617,8 +617,8 @@ public void out(){
 
 public void removeWeapon(Rectangle r) {
 	sendToAll(Json.createObjectBuilder().add("type", 5).add("stype", 6).add("id", r.id).build());
-	synchronized(this.map.weaopons){
-	this.map.weaopons.remove(r);
+	synchronized(this.map.weapons){
+	this.map.weapons.remove(r);
 	}
 	removeWeapon();
 }
@@ -667,8 +667,8 @@ public void addWeapon(Coord c, Weapon w){
 	Rectangle r = new Rectangle(c,null,w.groundw,w.groundh,0).addId(this.currentWeaponId);
 
 	
-	synchronized(this.map.weaopons){
-	this.map.weaopons.put(r, w);
+	synchronized(this.map.weapons){
+	this.map.weapons.put(r, w);
 	}
 	this.currentWeapons++;
 	if(this.running)
