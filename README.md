@@ -1,5 +1,5 @@
 # ArenaWars
-Dieses Projekt ist im Wintersemester 2015 an der Bergischen Universität Wuppertal entstanden und anschließend von mir weiterentwickelt. Es handelt sich hierbei um ein Echtzeit-Browsergame, in dem man sich in einer Arena gegenseitig bekämpfen kann. Es wäre schön, wenn hier mehrere kluge Köpfe das Projekt fortführen, deswegen lade ich es hier in Github hoch.
+Dieses Projekt ist im Wintersemester 2015 an der Bergischen Universität Wuppertal entstanden und anschließend von mir weiterentwickelt. Es handelt sich hierbei um ein Echtzeit-Browsergame, in dem man sich in einer Arena gegenseitig bekämpfen kann. Es wäre schön, wenn hier mehrere kluge Köpfe das Projekt fortführen, deswegen lade ich es hier in GitHub hoch.
 
 Aktuelle Version: 1.04
 
