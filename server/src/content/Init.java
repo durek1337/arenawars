@@ -92,8 +92,8 @@ public class Init { // Initialisierungsklasse
 
 	}
 
-	private static void runServer() throws Exception {
-		  Server server = new Server("localhost", new Integer(config.get("ws_port")), "/arenawars", null, Websocket.class);
+        private static void runServer() throws Exception {
+                  Server server = new Server("0.0.0.0", new Integer(config.get("ws_port")), "/arenawars", null, Websocket.class);
 		 		System.out.println("starting...");
 		 		server.start();
 				System.out.println("started!");
