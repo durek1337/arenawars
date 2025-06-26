@@ -1,27 +1,13 @@
 version: '3.7'
 services:
-  db:
-    image: mariadb:10.1
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: arenawars
-    volumes:
-      - ./arenawars.sql:/docker-entrypoint-initdb.d/arenawars.sql:ro
-    ports:
-      - "3306:3306"
-
-  server:
+  app:
     build: .
-    depends_on:
-      - db
-    ports:
-      - "8081:8081"
-    volumes:
-      - ./server/config.ini:/opt/arenawars/config.ini
-
-  client:
-    image: nginx:alpine
-    volumes:
-      - ./client:/usr/share/nginx/html:ro
     ports:
       - "8080:80"
+      - "8081:8081"
+    volumes:
+      - ./server/src:/opt/arenawars/src
+      - ./server/dependencies:/opt/arenawars/dependencies
+      - ./server/config.ini:/opt/arenawars/config.ini
+      - ./client:/usr/share/nginx/html
+      - ./arenawars.sql:/opt/arenawars/arenawars.sql

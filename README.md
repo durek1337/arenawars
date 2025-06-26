@@ -41,7 +41,7 @@ Marjan Markelj (Musik + Sound)
 
 ## Docker-Setup
 
-Mit Docker und docker-compose lässt sich das Projekt unkompliziert starten. Die bereitgestellte `docker-compose.yml` richtet eine MariaDB-Datenbank (Version 10.1), den Java-Server sowie einen kleinen nginx-Container für die statischen Client-Dateien ein.
+Mit Docker und `docker-compose` lässt sich das Projekt unkompliziert starten. Inzwischen laufen Server, Client und die Datenbank in **einem** Container.
 
 1. Docker und docker-compose installieren.
 2. Im Projektverzeichnis den folgenden Befehl ausführen:
@@ -50,4 +50,4 @@ Mit Docker und docker-compose lässt sich das Projekt unkompliziert starten. Die
    ```
 3. Der Client ist anschließend unter http://localhost:8080 erreichbar; der Websocket-Server läuft auf Port 8081.
 
-Beim ersten Start wird das SQL-Skript `arenawars.sql` automatisch in die Datenbank importiert.
+Beim ersten Start wird das SQL-Skript `arenawars.sql` automatisch in die Datenbank importiert und der Java-Code direkt aus den Quellen kompiliert.
