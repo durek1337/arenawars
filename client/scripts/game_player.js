@@ -21,9 +21,9 @@ this.isFollowing = false;
 this.map = user.getRoom().map;
 this.shots = {};
 
-this.domAppend = function(){ // Fügt DOM-Element zur HTML Struktur hinzu
+this.domAppend = function(){ // Fï¿½gt DOM-Element zur HTML Struktur hinzu
 var domid = "player-"+this.pos;
-$("#"+domid).remove(); // löschen falls vorhanden
+$("#"+domid).remove(); // lï¿½schen falls vorhanden
 
 var $p = $("<div />",{"class" : "player", id : domid}).append($("<div />",{"class" : "model"}).css("background-image","url('images/charset/pos"+((this.pos <= 20) ? this.pos : 0)+".png')").append($("<div />",{"class" : "fist hand"})));
 this.$dom = $p.appendTo($("#player"));
@@ -132,10 +132,7 @@ $(".fire",$ws).remove();
 $f = $("<div />",{"class" : "fire"}).css("background-image","url(images/weapon/"+wid+"/fire.png)").appendTo($ws);
 
 if(user.getConfig("sounds")){
-var $s = $.playSound("images/weapon/"+wid+"/shoot"+Math.ceil(Math.random()*6)+".mp3");
-$s.volume = this.getVolume();
-
-console.log($s.volume);
+var $s = $.playSound("images/weapon/"+wid+"/shoot"+(Math.floor(Math.random()*6)+1)+".mp3",{volume: this.getVolume()});
 }
 
 this.shooting = true;
@@ -223,10 +220,7 @@ this.$dom.zIndex(0);
 this.showBlood = function(dir){
 
 if(user.getConfig("sounds")){
-var $s = $.playSound("sounds/blood"+Math.ceil(Math.random()*5)+".mp3");
-$s.volume = this.getVolume();
-
-console.log($s.volume);
+var $s = $.playSound("sounds/blood"+(Math.floor(Math.random()*5)+1)+".mp3",{volume: this.getVolume()});
 }
 
 console.log("Zeige Blut: "+(dir-this.dir));
