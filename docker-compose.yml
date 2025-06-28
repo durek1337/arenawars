@@ -7,13 +7,12 @@ services:
       MYSQL_DATABASE: arenawars
     volumes:
       - ./arenawars.sql:/docker-entrypoint-initdb.d/arenawars.sql:ro
-    ports:
-      - "3306:3306"
-
+      
   server:
     build: .
     depends_on:
       - db
+    restart: unless-stopped
     ports:
       - "8081:8081"
     volumes:
