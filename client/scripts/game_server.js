@@ -1,6 +1,6 @@
 ﻿server = {
 //  path : (location.protocol.startsWith("https") ? "wss" : "ws")+ "://"+location.hostname+":8081/arenawars/control",
-  path : (location.protocol.startsWith("https") ? ("wss://"+location.hostname+"/api/arenawars/control") : "ws://"+location.hostname+":8080/arenawars/control"),
+  path : (location.protocol.startsWith("https") ? ("wss://"+location.hostname+"/api/arenawars/control") : "ws://"+location.hostname+":8081/arenawars/control"),
   connected : false,
   latencies: [],
   lastping : null,
