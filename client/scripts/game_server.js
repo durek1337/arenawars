@@ -1,5 +1,5 @@
 ﻿server = {
-  path : "ws://"+location.host+":8081/arenawars/control",
+  path : "ws://"+location.hostname+":8081/arenawars/control",
   //path : "ws://192.168.178.29:8081/arenawars/control",
   connected : false,
   latencies: [],

@@ -78,8 +78,8 @@ user = {
       "music" : true
       },
     configs : {
-      "sounds" : true,
-      "music" : true
+      "sounds" : false,
+      "music" : false
     },
     setConfig : function(k,v){
       console.log("Set config "+k+" to "+v);
@@ -88,7 +88,8 @@ user = {
             "music" : function(value){
                $backgroundMusic.muted=!value;
                $("#musiccontrol").attr("src","images/"+((value) ? "" : "no")+"sound.png");
-            }
+              if(value) $backgroundMusic.play();
+              }
         }
         var hf = handler[k];
         if(typeof hf != "undefined") hf(v);

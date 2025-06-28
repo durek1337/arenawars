@@ -76,10 +76,8 @@ keyboard.releaseAllKeys();
 });
 
 
-$backgroundMusic = $.playSound("sounds/lobby"+Math.ceil(Math.random()*2)+".mp3");
-$backgroundMusic.loop = true;
-$backgroundMusic.volume = user.soundMusic;
-
+$backgroundMusic = $.playSound("sounds/lobby"+(Math.floor(Math.random()*2)+1)+".mp3",{forcePlay: false, volume: user.soundMusic, loop: true});
+console.log("Background music volume: "+user.soundMusic, $backgroundMusic);
 
 $("#connectionDialog").dialog({
     title : "Serververbindung",
