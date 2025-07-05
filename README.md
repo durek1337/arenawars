@@ -51,3 +51,17 @@ Mit Docker und docker-compose lässt sich das Projekt unkompliziert starten. Die
 3. Der Client ist anschließend unter http://localhost:8080 erreichbar; der Websocket-Server läuft auf Port 8081.
 
 Beim ersten Start wird das SQL-Skript `arenawars.sql` automatisch in die Datenbank importiert.
+
+## Server Build
+
+Die Datei `server/awserver.jar` ist bereits vorkompiliert. Wenn Änderungen am
+Java-Code vorgenommen werden, lässt sich ein neues JAR mit dem Skript
+`server/build.sh` erstellen:
+
+```bash
+cd server
+./build.sh
+```
+
+Das Skript kompiliert alle Klassen mit Java 8-Kompatibilität und bundelt die
+benötigten Bibliotheken zu einem ausführbaren Fat‑JAR.
